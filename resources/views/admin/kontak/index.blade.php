@@ -41,6 +41,20 @@
                         <textarea name="alamat" class="form-control" rows="4" required>{{ old('alamat', $kontak->alamat) }}</textarea>
                     </div>
 
+                    <div class="form-group mb-4">
+                      <label class="font-weight-bold text-dark">Lokasi Sekolah</label>
+
+                        <iframe 
+                            src="https://www.google.com/maps?q={{ urlencode($kontak->alamat) }}&output=embed"
+                            width="100%" 
+                            height="300" 
+                            style="border:0;" 
+                            allowfullscreen 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+
                     <hr>
                     <div class="d-flex justify-content-end">
                         <button type="submit" class="btn btn-info px-4 shadow-sm" style="background-color: #3bc3d1; border: none;">
