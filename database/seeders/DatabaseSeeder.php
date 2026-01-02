@@ -2,21 +2,20 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Kontak; // Pastikan import model ini
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        $this->call([
-            UserSeeder::class,
+        // Data awal untuk tabel kontak
+        Kontak::create([
+            'email' => 'admin@smpbudimulia.sch.id',
+            'no_telp' => '+62 812-xxxx-xxxx',
+            'alamat' => 'Jl. Pelajar, Pangururan, Kabupaten Samosir, Sumatera Utara'
         ]);
+        
+        // Anda juga bisa menambahkan seeder untuk User Admin di sini jika belum ada
     }
 }

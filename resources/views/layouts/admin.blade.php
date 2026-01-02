@@ -88,6 +88,12 @@
                 </a>
             </li>
 
+            <li class="nav-item {{ Request::is('kontak*') ? 'active' : '' }}">
+                <a class="nav-link" href="{{ route('kontak.index') }}">
+                    <i class="fas fa-fw fa-address-book"></i>
+                    <span>Manajemen Kontak</span></a>
+            </li>
+
             <hr class="sidebar-divider d-none d-md-block">
 
             <div class="text-center d-none d-md-inline">

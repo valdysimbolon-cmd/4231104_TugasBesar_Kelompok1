@@ -2,65 +2,51 @@
 
 @section('content')
 <div class="container-fluid">
-    <!-- Header Halaman -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Berita & Kegiatan</h1>
-        <a href="{{ route('berita.create') }}" class="btn btn-primary btn-icon-split shadow-sm">
-            <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
-            </span>
-            <span class="text">Tambah Berita</span>
+    <!-- Header Page -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="font-weight-bold text-dark">Manajemen Berita & Kegiatan</h2>
+        <a href="{{ route('berita.create') }}" class="btn btn-info shadow-sm" style="background-color: #3bc3d1; border: none;">
+            <i class="fas fa-plus-circle mr-2"></i> Tambah Berita
         </a>
     </div>
 
-    @if(session('success'))
-        <div class="alert alert-success alert-dismissible fade show shadow-sm border-left-success" role="alert">
-            <i class="fas fa-check-circle mr-2"></i> {{ session('success') }}
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-    @endif
-
-    <div class="card shadow mb-4">
-        <div class="card-header py-3 bg-white">
-            <h6 class="m-0 font-weight-bold text-primary">Daftar Konten Berita</h6>
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-white py-3">
+            <h6 class="m-0 font-weight-bold" style="color: #3bc3d1;">Daftar Konten Berita</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-hover align-middle" width="100%" cellspacing="0">
-                    <thead class="bg-light">
-                        <tr class="text-dark">
-                            <th width="5%" class="text-center">No</th>
-                            <th width="15%" class="text-center">Gambar</th>
-                            <th width="55%">Informasi Berita</th>
-                            <th width="25%" class="text-center">Aksi</th>
+                <table class="table table-hover align-middle">
+                    <thead class="thead-light">
+                        <tr>
+                            <th class="text-center" width="5%">No</th>
+                            <th width="15%">Gambar</th>
+                            <th>Judul Berita</th>
+                            <th class="text-center" width="15%">Opsi Kelola</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($beritas as $key => $b)
+                        @foreach($beritas as $index => $b)
                         <tr>
-                            <td class="text-center font-weight-bold align-middle">{{ $key + 1 }}</td>
-                            <td class="text-center align-middle">
-                                <img src="{{ asset('Admin/img/berita/'.$b->gambar) }}" 
-                                     class="rounded shadow-sm border" 
-                                     style="width: 100px; height: 70px; object-fit: cover;">
+                            <td class="text-center">{{ $index + 1 }}</td>
+                            <td class="text-center">
+                                <img src="{{ asset('Admin/img/berita/'.$b->gambar) }}" class="rounded shadow-sm" style="width: 80px; height: 50px; object-fit: cover;">
                             </td>
-                            <td class="align-middle">
-                                <h6 class="font-weight-bold text-primary mb-1">{{ $b->judul }}</h6>
-                                <p class="small text-muted mb-0">{{ Str::limit($b->isi, 100) }}</p>
+                            <td>
+                                <span class="font-weight-bold text-dark">{{ $b->judul }}</span>
+                                <br>
+                                <small class="text-muted">{{ Str::limit($b->isi, 50) }}</small>
                             </td>
-                            <td class="text-center align-middle">
-                                <div class="btn-group" role="group">
-                                    <a href="{{ route('berita.edit', $b->id) }}" class="btn btn-warning btn-sm shadow-sm px-3" title="Edit">
-                                        <i class="fas fa-edit mr-1"></i> Edit
+                            <td class="text-center">
+                                <div class="d-flex justify-content-center">
+                                    <a href="{{ route('berita.edit', $b->id) }}" class="btn btn-warning btn-sm rounded-circle mx-1">
+                                        <i class="fas fa-pencil-alt"></i>
                                     </a>
-                                    
-                                    <form action="{{ route('berita.destroy', $b->id) }}" method="POST" class="d-inline ml-1">
+                                    <form action="{{ route('berita.destroy', $b->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus berita ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm shadow-sm px-3" onclick="return confirm('Yakin ingin menghapus berita ini?')">
-                                            <i class="fas fa-trash mr-1"></i> Hapus
+                                        <button type="submit" class="btn btn-danger btn-sm rounded-circle mx-1">
+                                            <i class="fas fa-trash"></i>
                                         </button>
                                     </form>
                                 </div>
