@@ -22,6 +22,26 @@
         </div>
     @endif
 
+    {{-- SEARCH PENGUMUMAN --}}
+<form action="{{ route('pengumuman.index') }}" method="GET" class="mb-3">
+    <div class="row">
+        <div class="col-md-4">
+            <input
+                type="text"
+                name="search"
+                class="form-control"
+                placeholder="Cari pengumuman..."
+                value="{{ request('search') }}"
+            >
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-primary">
+                <i class="fas fa-search"></i> Cari
+            </button>
+        </div>
+    </div>
+</form>
+
     <div class="card shadow mb-4">
         <div class="card-header py-3 bg-white border-bottom">
             <h6 class="m-0 font-weight-bold text-info">Daftar Dokumen Pengumuman</h6>
