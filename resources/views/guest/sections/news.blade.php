@@ -4,6 +4,7 @@
             <h2 class="section-heading text-uppercase">Berita & Kegiatan</h2>
             <h3 class="section-subheading text-muted">Aktivitas Terbaru Siswa</h3>
         </div>
+        
         <div class="row">
             @forelse($beritas as $b)
             <div class="col-lg-4 col-sm-6 mb-4">
@@ -19,7 +20,8 @@
             <div class="col-12 text-center text-muted">Belum ada berita terbaru.</div>
             @endforelse
         </div>
-                {{-- Tombol Lihat Semua Berita --}}
+
+        {{-- Tombol Lihat Semua Berita --}}
         @if($beritas->count() >= 3)
         <div class="text-center mt-4">
             <a href="{{ route('berita.index') }}"
@@ -28,33 +30,7 @@
                 Lihat Semua Berita
             </a>
         </div>
-                {{-- Tombol Lihat Semua Berita --}}
-        @if($beritas->count() >= 3)
-        <div class="text-center mt-4">
-            <a href="{{ route('berita.index') }}"
-               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
-                <i class="fas fa-newspaper me-2"></i>
-                Lihat Semua Berita
-            </a>
-        </div>
-         {{-- Tombol Lihat Semua Berita --}}
-        @if($beritas->count() >= 3)
-        <div class="text-center mt-4">
-            <a href="{{ route('berita.index') }}"
-               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
-                <i class="fas fa-newspaper me-2"></i>
-                Lihat Semua Berita
-            </a>
-        </div>
-                {{-- Tombol Lihat Semua Berita --}}
-        @if($beritas->count() >= 3)
-        <div class="text-center mt-4">
-            <a href="{{ route('berita.index') }}"
-               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
-                <i class="fas fa-newspaper me-2"></i>
-                Lihat Semua Berita
-            </a>
-        </div>
-        
+        @endif
+
     </div>
 </section>
