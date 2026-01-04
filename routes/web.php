@@ -7,16 +7,23 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\GaleriController;
-use App\Http\Controllers\KontakController; // <--- TAMBAHKAN INI
+use App\Http\Controllers\KontakController;
 
 /*
 |--------------------------------------------------------------------------
-| GUEST ROUTES
+| GUEST ROUTES (FRONTEND)
 |--------------------------------------------------------------------------
 */
 Route::get('/', [GuestController::class, 'index'])->name('guest.index');
 
-// ================= LOGIN MANUAL =================
+// Halaman semua berita (UX: tombol "Lihat Semua Berita")
+Route::get('/berita', [GuestController::class, 'semuaBerita'])->name('berita.index');
+
+/*
+|--------------------------------------------------------------------------
+| LOGIN
+|--------------------------------------------------------------------------
+*/
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login-process', [AuthController::class, 'login'])->name('login.process');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -33,10 +40,8 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     Route::resource('profil-sekolah', ProfilSekolahController::class);
-    Route::resource('berita', BeritaController::class);
+    Route::resource('berita', BeritaController::class); // ADMIN
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('galeri', GaleriController::class);
-    
-    // PERBAIKAN: Gunakan 'K' besar pada KontakController
     Route::resource('kontak', KontakController::class);
 });

@@ -19,5 +19,42 @@
             <div class="col-12 text-center text-muted">Belum ada berita terbaru.</div>
             @endforelse
         </div>
+                {{-- Tombol Lihat Semua Berita --}}
+        @if($beritas->count() >= 3)
+        <div class="text-center mt-4">
+            <a href="{{ route('berita.index') }}"
+               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
+                <i class="fas fa-newspaper me-2"></i>
+                Lihat Semua Berita
+            </a>
+        </div>
+                {{-- Tombol Lihat Semua Berita --}}
+        @if($beritas->count() >= 3)
+        <div class="text-center mt-4">
+            <a href="{{ route('berita.index') }}"
+               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
+                <i class="fas fa-newspaper me-2"></i>
+                Lihat Semua Berita
+            </a>
+        </div>
+         {{-- Tombol Lihat Semua Berita --}}
+        @if($beritas->count() >= 3)
+        <div class="text-center mt-4">
+            <a href="{{ route('berita.index') }}"
+               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
+                <i class="fas fa-newspaper me-2"></i>
+                Lihat Semua Berita
+            </a>
+        </div>
+                {{-- Tombol Lihat Semua Berita --}}
+        @if($beritas->count() >= 3)
+        <div class="text-center mt-4">
+            <a href="{{ route('berita.index') }}"
+               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
+                <i class="fas fa-newspaper me-2"></i>
+                Lihat Semua Berita
+            </a>
+        </div>
+        
     </div>
 </section>
