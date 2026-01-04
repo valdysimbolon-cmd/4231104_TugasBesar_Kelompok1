@@ -16,8 +16,6 @@ use App\Http\Controllers\StrukturOrganisasiController;
 |--------------------------------------------------------------------------
 */
 Route::get('/', [GuestController::class, 'index'])->name('guest.index');
-
-// Halaman semua berita (UX: tombol "Lihat Semua Berita")
 Route::get('/berita', [GuestController::class, 'semuaBerita'])->name('berita.index');
 
 /*
@@ -35,12 +33,11 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth'])->group(function () {
-
     Route::get('/dashboard', function () {
         return view('layouts.dashboard');
     })->name('dashboard');
 
-    // CRUD Resource Routes
+    // Semua Resource Admin
     Route::resource('profil-sekolah', ProfilSekolahController::class);
     Route::resource('berita', BeritaController::class);
     Route::resource('pengumuman', PengumumanController::class);

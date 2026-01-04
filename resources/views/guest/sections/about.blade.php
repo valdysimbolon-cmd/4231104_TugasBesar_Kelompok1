@@ -155,7 +155,6 @@
             </div>
         </div>
 
-        {{-- Menampilkan Note/Catatan Kaki dari Textarea Profil --}}
         @if($profil->tugas_tanggung_jawab)
         <div class="text-center mt-5">
             <p class="text-muted small italic">
