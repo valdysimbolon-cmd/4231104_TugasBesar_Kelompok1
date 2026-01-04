@@ -1,0 +1,38 @@
+/* public/css/navbar.css */
+
+/* Background navbar */
+#mainNav {
+    background: linear-gradient(90deg, #0d47a1, #1976d2);
+    transition: background-color 0.3s ease;
+}
+
+/* Brand (logo / nama sekolah) */
+#mainNav .navbar-brand {
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+#mainNav .navbar-brand:hover {
+    color: #bbdefb;
+}
+
+/* Link menu */
+#mainNav .nav-link {
+    color: #e3f2fd;
+    font-weight: 600;
+}
+
+#mainNav .nav-link:hover {
+    color: #ffffff;
+}
+
+/* Tombol login */
+#mainNav .btn-warning {
+    background-color: #64b5f6;
+    border: none;
+}
+
+#mainNav .btn-warning:hover {
+    background-color: #42a5f5;
+    color: #ffffff;
+}

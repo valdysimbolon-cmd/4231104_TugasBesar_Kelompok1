@@ -7,21 +7,21 @@
         <div class="row text-center text-white g-4">
             <div class="col-md-4">
                 <div class="p-4 rounded-4 bg-white bg-opacity-10 h-100 border border-secondary border-opacity-25">
-                    <i class="fas fa-map-marker-alt fa-3x text-primary mb-3"></i>
+                    <i class="fas fa-map-marker-alt fa-3x text-blue mb-3"></i>
                     <h5 class="fw-bold">Alamat</h5>
                     <p class="small opacity-75">{{ $kontak->alamat ?? 'Alamat belum diatur' }}</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-4 rounded-4 bg-white bg-opacity-10 h-100 border border-secondary border-opacity-25">
-                    <i class="fas fa-phone fa-3x text-primary mb-3"></i>
+                    <i class="fas fa-phone fa-3x text-blue mb-3"></i>
                     <h5 class="fw-bold">Telepon</h5>
                     <p class="small opacity-75">{{ $kontak->no_telp ?? 'Telepon belum diatur' }}</p>
                 </div>
             </div>
             <div class="col-md-4">
                 <div class="p-4 rounded-4 bg-white bg-opacity-10 h-100 border border-secondary border-opacity-25">
-                    <i class="fas fa-envelope fa-3x text-primary mb-3"></i>
+                    <i class="fas fa-envelope fa-3x text-blue mb-3"></i>
                     <h5 class="fw-bold">Email</h5>
                     <p class="small opacity-75">{{ $kontak->email ?? 'Email belum diatur' }}</p>
                 </div>

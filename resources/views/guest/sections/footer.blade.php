@@ -1,4 +1,4 @@
-<footer class="footer py-4 bg-dark text-white border-top border-warning border-4">
+<footer class="footer py-4 bg-dark text-white bg-border-blue border-blue border-4">
     <div class="container text-center">
         <div class="row align-items-center">
             <div class="col-lg-4 text-lg-start small opacity-75">Copyright &copy; SMP Budi Mulia {{ date('Y') }}</div>
