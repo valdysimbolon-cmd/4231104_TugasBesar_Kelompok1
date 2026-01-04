@@ -8,6 +8,7 @@ use App\Models\Pengumuman;
 use App\Models\Galeri;
 use App\Models\Profil;
 use App\Models\Kontak;
+use App\Models\StrukturOrganisasi; // <--- TAMBAHKAN INI
 
 class GuestController extends Controller
 {
@@ -17,7 +18,11 @@ class GuestController extends Controller
     public function index()
     {
         // 3 berita terbaru (UX + BONUS)
+        $profil = Profil::first();
         $beritas = Berita::latest()->take(3)->get();
+
+        // Mengambil data baris-baris Struktur Organisasi (untuk Tabel Tugas & Tanggung Jawab)
+        $struktur = StrukturOrganisasi::orderBy('id', 'asc')->get();
 
         // Data lainnya
         $pengumumans = Pengumuman::latest()->get();
@@ -30,7 +35,8 @@ class GuestController extends Controller
             'pengumumans',
             'galeris',
             'profil',
-            'kontak'
+            'kontak',
+            'struktur' // <--- PASTIKAN INI DIKIRIM KE VIEW
         ));
     }
 
@@ -48,6 +54,7 @@ class GuestController extends Controller
             });
         }
 
+        // Pagination 6 berita per halaman
         $beritas = $query->latest()->paginate(6);
 
         return view('guest.semua-berita', compact('beritas'));

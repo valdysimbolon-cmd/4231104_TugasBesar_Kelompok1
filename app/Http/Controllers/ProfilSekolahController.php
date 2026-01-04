@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profil;
+use App\Models\StrukturOrganisasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class ProfilSekolahController extends Controller
 {
     public function index() {
-        $profil = Profil::first(); // Mengambil data pertama
-        return view('admin.profil.index', compact('profil'));
+        $profil = Profil::first();
+        $struktur = StrukturOrganisasi::all(); // Tambahkan baris ini
+        return view('admin.profil.index', compact('profil', 'struktur')); // Tambahkan 'struktur'
     }
+
+// ... bagian atas sama ...
 
     public function store(Request $request) {
         $request->validate([
             'sejarah' => 'required',
             'visi' => 'required',
             'misi' => 'required',
+            'tugas_tanggung_jawab' => 'required', // Tambahkan validasi
             'struktur_organisasi' => 'required|image|max:2048'
         ]);
 
@@ -37,6 +42,15 @@ class ProfilSekolahController extends Controller
 
     public function update(Request $request, $id) {
         $profil = Profil::findOrFail($id);
+        
+        // Tambahkan validasi di sini juga
+        $request->validate([
+            'sejarah' => 'required',
+            'visi' => 'required',
+            'misi' => 'required',
+            'tugas_tanggung_jawab' => 'required',
+        ]);
+
         $nama_file = $profil->struktur_organisasi;
 
         if ($request->hasFile('struktur_organisasi')) {

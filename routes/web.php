@@ -8,10 +8,7 @@ use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KontakController;
-<<<<<<< HEAD
-use App\Http\Controllers\StrukturOrganisasiController;// <--- TAMBAHKAN INI
-=======
->>>>>>> 0ff7f5b3f8c84845039b72cfc86e80d7f04b8140
+use App\Http\Controllers\StrukturOrganisasiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,7 +22,7 @@ Route::get('/berita', [GuestController::class, 'semuaBerita'])->name('berita.ind
 
 /*
 |--------------------------------------------------------------------------
-| LOGIN
+| LOGIN / AUTHENTICATION
 |--------------------------------------------------------------------------
 */
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -43,14 +40,11 @@ Route::middleware(['auth'])->group(function () {
         return view('layouts.dashboard');
     })->name('dashboard');
 
+    // CRUD Resource Routes
     Route::resource('profil-sekolah', ProfilSekolahController::class);
-    Route::resource('berita', BeritaController::class); // ADMIN
+    Route::resource('berita', BeritaController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('galeri', GaleriController::class);
-<<<<<<< HEAD
     Route::resource('struktur-organisasi', StrukturOrganisasiController::class);
-    // PERBAIKAN: Gunakan 'K' besar pada KontakController
-=======
->>>>>>> 0ff7f5b3f8c84845039b72cfc86e80d7f04b8140
     Route::resource('kontak', KontakController::class);
 });

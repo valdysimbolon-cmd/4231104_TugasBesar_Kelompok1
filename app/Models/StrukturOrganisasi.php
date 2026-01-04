@@ -9,9 +9,6 @@ class StrukturOrganisasi extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'jabatan',
-        'nama',
-        'tugas'
-    ];
+    // WAJIB: Daftarkan kolom yang boleh diisi
+    protected $fillable = ['jabatan', 'nama', 'tugas'];
 }

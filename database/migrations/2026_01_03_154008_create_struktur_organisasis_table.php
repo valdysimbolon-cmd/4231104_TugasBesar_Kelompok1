@@ -14,11 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->string('jabatan');
             $table->string('nama');
-            $table->text('tugas');
+            $table->text('tugas'); // Menggunakan text agar muat banyak karakter
             $table->timestamps();
         });
-
-
     }
 
     /**
