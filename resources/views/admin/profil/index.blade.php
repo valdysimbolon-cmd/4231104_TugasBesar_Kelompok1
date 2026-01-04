@@ -84,6 +84,32 @@
                     </div>
                 </div>
 
+                <!-- STRUKTUR ORGANISASI -->
+            <h5 class="font-weight-bold mb-3">Tambah Struktur Organisasi</h5>
+
+            <form action="{{ route('struktur-organisasi.store') }}" method="POST">
+                @csrf
+
+                <div class="row">
+                    <div class="col-md-4 mb-2">
+                        <input type="text" name="jabatan" class="form-control" placeholder="Jabatan" required>
+                    </div>
+
+                    <div class="col-md-4 mb-2">
+                        <input type="text" name="nama" class="form-control" placeholder="Nama Guru / Staf" required>
+                    </div>
+
+                    <div class="col-md-4 mb-2">
+                        <input type="text" name="tugas" class="form-control" placeholder="Tugas" required>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-sm mt-2">
+                    <i class="fas fa-plus"></i> Tambah
+                </button>
+            </form>
+
+
                 <!-- Tombol Submit -->
                 <div class="text-right mt-5 border-top pt-3">
                     <button type="submit" class="btn btn-primary btn-icon-split shadow-sm">
@@ -91,7 +117,7 @@
                             <i class="fas fa-save"></i>
                         </span>
                         <span class="text">{{ !$profil ? 'Simpan Profil Sekolah' : 'Simpan Perubahan' }}</span>
-                    </button>
+                    </fbutton>
                 </div>
             </form>
         </div>

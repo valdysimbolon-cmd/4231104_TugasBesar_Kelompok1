@@ -20,12 +20,15 @@
 <body id="page-top">
     @include('guest.sections.navbar')
     @include('guest.sections.hero')
+    @include('guest.sections.about')
     @include('guest.sections.services')
     @include('guest.sections.news')
     @include('guest.sections.announcement')
     @include('guest.sections.gallery')
     @include('guest.sections.contact')
     @include('guest.sections.footer')
+    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="{{ asset('agency/js/scripts.js') }}"></script>

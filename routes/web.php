@@ -7,7 +7,8 @@ use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\PengumumanController;
 use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\GaleriController;
-use App\Http\Controllers\KontakController; // <--- TAMBAHKAN INI
+use App\Http\Controllers\KontakController;
+use App\Http\Controllers\StrukturOrganisasiController;// <--- TAMBAHKAN INI
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +37,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('berita', BeritaController::class);
     Route::resource('pengumuman', PengumumanController::class);
     Route::resource('galeri', GaleriController::class);
-    
+    Route::resource('struktur-organisasi', StrukturOrganisasiController::class);
     // PERBAIKAN: Gunakan 'K' besar pada KontakController
     Route::resource('kontak', KontakController::class);
 });
