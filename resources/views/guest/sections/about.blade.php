@@ -1,97 +1,65 @@
-<section class="page-section" id="about">
+<section id="about" class="py-5">
     <div class="container">
-        <div class="text-center">
-            <h2 class="section-heading text-uppercase">Profil Sekolah</h2>
-        </div>
-        <p class="text-center mt-4">
-            {{ $profil->deskripsi ?? 'Profil sekolah belum tersedia.' }}
+
+        <h2 class="mb-4 text-center">Tentang Sekolah</h2>
+        
+        <!-- Struktur Organisasi -->
+        <h5 class="mt-4">Struktur Organisasi Sekolah</h5>
+        <table class="table table-bordered table-striped">
+            <tbody>
+                <tr>
+                    <th width="40%">Yayasan</th>
+                    <td>Yayasan Budi Mulia Lourdes</td>
+                </tr>
+                <tr>
+                    <th>Kepala Sekolah</th>
+                    <td>Damanus Hariyadi, S.Psi</td>
+                </tr>
+                <tr>
+                    <th>Komite Sekolah</th>
+                    <td>Abmitua Simbolon, SH</td>
+                </tr>
+                <tr>
+                    <th>Tata Usaha</th>
+                    <td>Setmelita Simanjuntak</td>
+                </tr>
+                <tr>
+                    <th>Bendahara</th>
+                    <td>Hironimus Madek</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Wakil Kepala Sekolah -->
+        <h5 class="mt-4">Wakil Kepala Sekolah</h5>
+        <ul>
+            <li>PKS I (Bidang Kurikulum) : Darwin Turnip, S.Pd</li>
+            <li>PKS II (Bidang Kesiswaan) : Cosmas Ginting, S.Pd</li>
+            <li>PKS III (Bidang Sarana & Prasarana) : Marusaha E. Tambunan, S.Pd</li>
+        </ul>
+
+        <!-- Unit Pendukung -->
+        <h5 class="mt-4">Unit Pendukung</h5>
+        <ul>
+            <li>Bimbingan Konseling : Br. Agustinus, BM</li>
+            <li>Wali Kelas & Dewan Guru</li>
+        </ul>
+
+        <!-- Peserta Didik -->
+        <h5 class="mt-4">Peserta Didik</h5>
+        <p>
+            Peserta didik merupakan pusat dari seluruh kegiatan pendidikan di
+            SMP Swasta Budi Mulia Pangururan.
         </p>
-    </div>
-</section>
 
-<section class="page-section bg-light" id="tugas-tanggung-jawab">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase">Tugas & Tanggung Jawab</h2>
-            <h3 class="section-subheading text-muted">
-                Struktur Organisasi SMP Budi Mulia Pangururan
-            </h3>
-        </div>
+        <!-- Tugas Guru -->
+        <h5 class="mt-4">Tugas dan Tanggung Jawab Guru</h5>
+        <ul>
+            <li>Melaksanakan proses pembelajaran sesuai kurikulum</li>
+            <li>Membimbing dan mendidik peserta didik</li>
+            <li>Melakukan penilaian dan evaluasi hasil belajar</li>
+            <li>Menjadi teladan dalam sikap dan perilaku</li>
+        </ul>
 
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="card shadow border-0">
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover">
-                                <thead class="table-dark text-center">
-                                    <tr>
-                                        <th style="width: 5%">No</th>
-                                        <th style="width: 20%">Jabatan</th>
-                                        <th style="width: 25%">Nama Guru/Staf</th>
-                                        <th style="width: 50%">Uraian Tugas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td class="fw-bold">Kepala Sekolah</td>
-                                        <td>Fransiskus Sarwedi Sirait, B.M., M.Pd.</td>
-                                        <td>
-                                            Bertanggung jawab penuh atas seluruh kegiatan operasional sekolah,
-                                            kurikulum, dan manajemen guru.
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-center">2</td>
-                                        <td class="fw-bold">Bagian Kurikulum</td>
-                                        <td>Darwin Turnip, S.Pd</td>
-                                        <td>
-                                            Menyusun jadwal pelajaran, kalender akademik,
-                                            dan memantau proses belajar mengajar.
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-center">3</td>
-                                        <td class="fw-bold">Bagian Kesiswaan</td>
-                                        <td>Cosmas Ginting, S.Pd</td>
-                                        <td>
-                                            Mengelola kedisiplinan siswa, kegiatan OSIS,
-                                            dan ekstrakurikuler.
-                                        </td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-center">4</td>
-                                        <td class="fw-bold">Waka Sarpras</td>
-                                        <td>Marusaha E. Tambunan, S.Pd</td>
-                                        <td>Mengelola inventaris sekolah, perawatan gedung, dan fasilitas belajar.</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td class="text-center">5</td>
-                                        <td class="fw-bold">Tata Usaha</td>
-                                        <td>Setmelita Simanjuntak</td>
-                                        <td>
-                                            Mengurus administrasi sekolah, surat-menyurat,
-                                            dan pendataan siswa.
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                        <p class="text-muted mt-4 text-center">
-                            Struktur organisasi ini disusun untuk memperjelas pembagian tugas dan
-                            tanggung jawab dalam mendukung kegiatan akademik dan non-akademik
-                            di SMP Budi Mulia Pangururan.
-                        </p>
-
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
