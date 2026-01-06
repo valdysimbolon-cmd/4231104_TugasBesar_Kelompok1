@@ -21,7 +21,6 @@
 
                 <div class="form-group mb-4">
                     <label>Isi Detail Pengumuman</label>
-                    <!-- KESALAHAN SEBELUMNYA: name="isi" DIUBAH JADI name="isi_pengumuman" -->
                     <textarea name="isi_pengumuman" class="form-control @error('isi_pengumuman') is-invalid @enderror" rows="6" required>{{ old('isi_pengumuman') }}</textarea>
                     @error('isi_pengumuman')
                         <div class="invalid-feedback">{{ $message }}</div>

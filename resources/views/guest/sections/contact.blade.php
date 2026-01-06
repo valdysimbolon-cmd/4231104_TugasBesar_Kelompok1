@@ -1,7 +1,4 @@
-<!-- Wrapper Utama -->
 <div class="integrated-section">
-    
-    <!-- Bagian Hubungi Kami -->
     <section class="pt-5 pb-0" id="contact">
         <div class="container py-4">
             <div class="text-center mb-5">
@@ -12,7 +9,6 @@
             </div>
 
             <div class="row g-4 mb-5">
-                <!-- Kartu Alamat -->
                 <div class="col-md-4">
                     @php
                         $alamat_teks = $kontak->alamat ?? 'Pardomuan I, Kec. Pangururan, Kabupaten Samosir, Sumatera Utara';
@@ -30,7 +26,6 @@
                     </a>
                 </div>
 
-                <!-- Kartu Telepon -->
                 <div class="col-md-4">
                     <a href="tel:{{ $kontak->no_telp ?? '(0626)20770' }}" class="text-decoration-none card-link">
                         <div class="card h-100 border-0 shadow-sm p-4 text-center contact-card">
@@ -44,7 +39,6 @@
                     </a>
                 </div>
 
-                <!-- Kartu Email -->
                 <div class="col-md-4">
                     <a href="mailto:{{ $kontak->email ?? 'info@smpbudimuliapangururan.sch.id' }}" class="text-decoration-none card-link">
                         <div class="card h-100 border-0 shadow-sm p-4 text-center contact-card">

@@ -13,17 +13,14 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="news-gallery-card shadow-sm h-100">
                     
-                    <!-- AREA GAMBAR - TINGGI DIKUNCI 200PX -->
                     <div class="news-img-container">
                         <img src="{{ asset('Admin/img/berita/'.$b->gambar) }}" 
                              alt="{{ $b->judul }}"
                              class="news-img-effect"
                              onerror="this.src='https://placehold.co/600x400?text=Berita';">
                         
-                        <!-- Overlay Biru Transparan (Ikon Sudah Dihapus) -->
                         <div class="news-overlay-effect"></div>
 
-                        <!-- Tag Tanggal -->
                         <div class="news-date-badge">
                             {{ $b->created_at->format('d M') }}
                         </div>
@@ -87,12 +84,11 @@
         display: block !important;
     }
 
-    /* Lapisan Biru Tanpa Ikon */
     .news-overlay-effect {
         position: absolute;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: rgba(13, 110, 253, 0.4); /* Biru transparan lebih halus */
+        background: rgba(13, 110, 253, 0.4); 
         opacity: 0;
         transition: opacity 0.4s ease;
         backdrop-filter: blur(1px);

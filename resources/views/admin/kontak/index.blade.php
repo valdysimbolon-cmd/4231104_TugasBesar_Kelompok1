@@ -11,7 +11,6 @@
             </h6>
         </div>
         <div class="card-body">
-            <!-- Jika data belum ada di database -->
             @if(!$kontak)
                 <div class="alert alert-warning">
                     Data kontak belum ada. Silakan isi data awal melalui Database Seeder.

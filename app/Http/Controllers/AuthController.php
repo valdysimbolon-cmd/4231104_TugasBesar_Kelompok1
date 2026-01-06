@@ -7,13 +7,13 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    // Tampilkan halaman login
+    // --- VIEW: Menampilkan halaman login ---
     public function showLogin()
     {
         return view('auth.login');
     }
 
-    // Proses login
+    // --- PROSES: Validasi kredensial dan pembuatan session ---
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -23,8 +23,6 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-
-            // ✅ SETELAH LOGIN MASUK ADMIN (SB ADMIN 2)
             return redirect()->route('dashboard');
         }
 
@@ -33,15 +31,13 @@ class AuthController extends Controller
         ]);
     }
 
-    // Logout
+    // --- PROSES: Penghapusan session dan logout ---
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // Kembali ke halaman guest
         return redirect('/');
     }
 }

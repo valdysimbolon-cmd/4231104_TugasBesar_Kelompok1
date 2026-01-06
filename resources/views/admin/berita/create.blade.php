@@ -27,7 +27,6 @@
                     <textarea name="isi" class="form-control" rows="6" required></textarea>
                 </div>
 
-                <!-- INPUT LINK BARU -->
                 <div class="form-group mb-4">
                     <label class="font-weight-bold text-dark">Link Eksternal (Instagram / Video YouTube)</label>
                     <input type="url" name="link_berita" class="form-control" placeholder="https://www.instagram.com/p/...">

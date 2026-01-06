@@ -38,7 +38,6 @@ class GaleriController extends Controller
         return redirect()->back()->with('error', 'Gagal mengunggah foto.');
     }
 
-    // TAMPILKAN HALAMAN EDIT
     public function edit($id)
     {
         $galeri = Galeri::findOrFail($id);

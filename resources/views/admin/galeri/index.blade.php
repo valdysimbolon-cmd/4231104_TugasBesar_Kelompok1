@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container-fluid">
-    <!-- Header Page -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="font-weight-bold text-dark">Manajemen Galeri</h2>
         <button type="button" class="btn btn-info shadow-sm" style="background-color: #3bc3d1; border: none;" data-toggle="modal" data-target="#modalTambahGaleri">
@@ -12,7 +11,6 @@
 
     <div class="card shadow-sm border-0">
         <div class="card-header bg-white py-3">
-            <!-- Penyesuaian Warna Teal/Info pada Judul Card -->
             <h6 class="m-0 font-weight-bold" style="color: #3bc3d1;">
                 <i class="fas fa-images mr-1"></i> Daftar Foto Kegiatan
             </h6>

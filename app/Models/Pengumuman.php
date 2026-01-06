@@ -8,9 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Pengumuman extends Model
 {
     use HasFactory;
-
-    // Tambahkan baris ini untuk memberitahu Laravel nama tabel yang benar
     protected $table = 'pengumumans'; 
-
     protected $fillable = ['judul', 'isi_pengumuman', 'file_upload'];
 }

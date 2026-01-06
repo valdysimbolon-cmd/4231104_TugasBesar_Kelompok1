@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container-fluid">
-    <!-- Header Page -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="font-weight-bold text-dark">Manajemen Berita & Kegiatan</h2>
         <a href="{{ route('berita.create') }}" class="btn btn-info shadow-sm" style="background-color: #3bc3d1; border: none;">

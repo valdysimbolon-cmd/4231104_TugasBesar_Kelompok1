@@ -8,52 +8,38 @@ use App\Models\Pengumuman;
 use App\Models\Galeri;
 use App\Models\Profil;
 use App\Models\Kontak;
-use App\Models\StrukturOrganisasi; // <--- TAMBAHKAN INI
+use App\Models\StrukturOrganisasi;
 
 class GuestController extends Controller
 {
+    // --- VIEW: Halaman Landing Page (Beranda) ---
     public function index()
     {
-        // 3 berita terbaru (UX + BONUS)
-        $profil = Profil::first();
-        $beritas = Berita::latest()->take(3)->get();
-
-        // Mengambil data baris-baris Struktur Organisasi (untuk Tabel Tugas & Tanggung Jawab)
+        // Mengambil data untuk disajikan di halaman utama
+        $beritas = Berita::latest()->take(3)->get(); // Hanya tampilkan 3 berita terbaru
         $struktur = StrukturOrganisasi::all();
-
-        // Data lainnya
         $pengumumans = Pengumuman::latest()->get();
         $galeris = Galeri::latest()->get();
         $profil = Profil::first();
         $kontak = Kontak::first();
 
         return view('guest.index', compact(
-            'beritas',
-            'pengumumans',
-            'galeris',
-            'profil',
-            'kontak',
-            'struktur' // <--- PASTIKAN INI DIKIRIM KE VIEW
+            'beritas', 'pengumumans', 'galeris', 'profil', 'kontak', 'struktur'
         ));
     }
 
-    /**
-     * Halaman Semua Berita + Search + Pagination
-     */
+    // --- VIEW: Halaman daftar berita lengkap dengan pencarian ---
     public function semuaBerita(Request $request)
     {
         $query = Berita::query();
 
+        // Logika fitur pencarian berita
         if ($request->filled('search')) {
-            $query->where(function ($q) use ($request) {
-                $q->where('judul', 'like', '%' . $request->search . '%')
+            $query->where('judul', 'like', '%' . $request->search . '%')
                   ->orWhere('isi', 'like', '%' . $request->search . '%');
-            });
         }
 
-        // Pagination 6 berita per halaman
-        $beritas = $query->latest()->paginate(6);
-
+        $beritas = $query->latest()->paginate(6); // Pagination agar tampilan rapi
         return view('guest.semua-berita', compact('beritas'));
     }
 }

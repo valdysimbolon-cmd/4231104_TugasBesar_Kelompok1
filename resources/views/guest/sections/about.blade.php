@@ -1,133 +1,96 @@
-<!-- CSS UNTUK TAMPILAN ELEGAN -->
-<style>
-    .section-title-line {
-        width: 60px;
-        height: 3px;
-        background: #0d6efd;
-        margin: 10px auto 30px;
-        border-radius: 2px;
-    }
-    .elegant-card {
-        background: #ffffff;
-        border: 1px solid #eef2f7;
-        border-radius: 15px;
-        padding: 40px 30px;
-        transition: all 0.3s ease;
-        height: 100%;
-        box-shadow: 0 5px 15px rgba(0,0,0,0.02);
-    }
-    .elegant-card:hover {
-        transform: translateY(-5px);
-        border-color: #0d6efd;
-        box-shadow: 0 10px 25px rgba(13, 110, 253, 0.1);
-    }
-    .accent-text {
-        color: #0d6efd;
-        font-weight: 700;
-        letter-spacing: 2px;
-        font-size: 0.8rem;
-        display: block;
-        margin-bottom: 10px;
-    }
-    .clean-table thead {
-        background: #212529;
-        color: #fff;
-    }
-    .clean-table th { padding: 15px !important; border: none; font-size: 0.9rem; }
-    .clean-table td { padding: 15px !important; vertical-align: middle; }
-    .jabatan-label {
-        color: #0d6efd;
-        font-weight: 700;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-    }
-</style>
+<div class="profile-section-wrapper" id="about">
 
-<!-- 1. VISI & MISI -->
-<section class="page-section" id="about">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase">Visi & Misi</h2>
-            <div class="section-title-line"></div>
-        </div>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="elegant-card text-center">
-                    <span class="accent-text">OUR VISION</span>
-                    <h3 class="fw-bold mb-3">VISI</h3>
-                    <p class="text-muted fst-italic" style="font-size: 1.1rem;">
-                        "{{ $profil->visi ?? 'Visi sekolah belum diisi.' }}"
-                    </p>
-                </div>
+    <!-- 1. VISI & MISI -->
+    <section class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase" style="letter-spacing: 2px;">TUJUAN KAMI</span>
+                <h2 class="display-5 fw-bold text-dark">Visi & Misi</h2>
+                <div class="header-line-blue mx-auto mt-3"></div>
             </div>
-            <div class="col-md-6 mb-4">
-                <div class="elegant-card">
-                    <div class="text-center">
-                        <span class="accent-text">OUR MISSION</span>
-                        <h3 class="fw-bold mb-3">MISI</h3>
+
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="elegant-vision-card shadow-sm h-100">
+                        <div class="icon-circle-bg mb-3">
+                            <i class="fas fa-eye fa-2x text-primary"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3 text-dark text-center">VISI</h3>
+                        <p class="visi-text">
+                            "{{ $profil->visi ?? 'Visi sekolah belum diatur.' }}"
+                        </p>
                     </div>
-                    <div class="text-muted" style="line-height: 1.8; font-size: 0.95rem;">
-                        {!! nl2br(e($profil->misi ?? 'Misi sekolah belum diisi.')) !!}
+                </div>
+                <div class="col-md-6">
+                    <div class="elegant-vision-card shadow-sm h-100">
+                        <div class="icon-circle-bg mb-3 mx-auto">
+                            <i class="fas fa-bullseye fa-2x text-primary"></i>
+                        </div>
+                        <h3 class="fw-bold mb-3 text-dark text-center">MISI</h3>
+                        <div class="misi-list text-muted text-start">
+                            {!! $profil->misi ? nl2br(e($profil->misi)) : 'Misi sekolah belum diatur.' !!}
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 2. SEJARAH SEKOLAH -->
-<section class="page-section bg-light">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-5 mb-4">
-                <img src="{{ asset('Admin/img/profil/sekolah_depan.jpg') }}" 
-                     class="img-fluid rounded-4 shadow-lg border-5 border-white border" 
-                     alt="Gedung Sekolah">
-            </div>
-            <div class="col-lg-7 ps-lg-5">
-                <h2 class="section-heading text-uppercase">Sejarah Sekolah</h2>
-                <div class="text-muted mt-3" style="text-align: justify; line-height: 1.9;">
-                    {!! nl2br(e($profil->sejarah ?? 'Data sejarah belum tersedia.')) !!}
+    <!-- 2. SEJARAH -->
+    <section class="py-5 bg-light-custom">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <div class="history-img-wrapper shadow-lg border border-white border-5">
+                        <img src="{{ asset('Admin/img/profil/sekolah_depan.jpg') }}" 
+                             class="img-fluid rounded-4" alt="Gedung Sekolah"
+                             onerror="this.src='https://placehold.co/600x400?text=Gedung+Sekolah';">
+                    </div>
+                </div>
+                <div class="col-lg-7">
+                    <span class="text-primary fw-bold text-uppercase small" style="letter-spacing: 2px;">REKAM JEJAK</span>
+                    <h2 class="fw-bold text-dark mb-4 display-6">Sejarah Sekolah</h2>
+                    <div class="history-content text-muted">
+                        {!! $profil->sejarah ? nl2br(e($profil->sejarah)) : 'Data sejarah belum tersedia.' !!}
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- 3. STRUKTUR ORGANISASI (GAMBAR BAGAN & TABEL RINCIAN) -->
-<section class="page-section" id="tugas-tanggung-jawab">
-    <div class="container">
-        <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase">Struktur Organisasi</h2>
-            <h3 class="section-subheading text-muted">Bagan Struktur Organisasi SMP Budi Mulia Pangururan</h3>
-            <div class="section-title-line"></div>
-        </div>
-
-        <!-- A. TAMPILKAN GAMBAR BAGAN (DARI ADMIN PROFIL) -->
-        <div class="row justify-content-center mb-5">
-            <div class="col-lg-10 text-center">
-                <div class="p-3 bg-white shadow-sm rounded-4 mb-3 border">
-                    @if($profil && $profil->struktur_organisasi)
-                        <img src="{{ asset('Admin/img/profil/' . $profil->struktur_organisasi) }}" 
-                             class="img-fluid rounded-3" 
-                             alt="Bagan Struktur Organisasi">
-                    @else
-                        <p class="text-muted py-5">Bagan struktur organisasi belum diunggah.</p>
-                    @endif
-                </div>
-                <small class="text-muted">Bagan & Rincian Tugas Guru/Staf</small>
+    <!-- 3. STRUKTUR ORGANISASI -->
+    <section class="py-5 bg-white">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <span class="text-primary fw-bold text-uppercase" style="letter-spacing: 2px;">ORGANISASI</span>
+                <h2 class="display-5 fw-bold text-dark">Struktur Organisasi</h2>
+                <p class="text-muted small">Bagan & Rincian Tugas Guru/Staf SMP Budi Mulia</p>
+                <div class="header-line-blue mx-auto mt-3"></div>
             </div>
-        </div>
 
-        <!-- B. TAMPILKAN TABEL RINCIAN (DARI MENU STRUKTUR ORGANISASI) -->
-        <div class="card shadow-lg border-0 rounded-4 overflow-hidden">
-            <div class="card-body p-0">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8">
+                    <div class="structure-img-box shadow-sm border rounded-4 bg-white">
+                        @if($profil && $profil->struktur_organisasi)
+                            <a href="{{ asset('Admin/img/profil/' . $profil->struktur_organisasi) }}" target="_blank">
+                                <img src="{{ asset('Admin/img/profil/' . $profil->struktur_organisasi) }}" 
+                                     class="structure-img-limited" alt="Bagan Struktur">
+                            </a>
+                        @else
+                            <div class="py-5 text-center text-muted italic">Bagan struktur belum diunggah.</div>
+                        @endif
+                    </div>
+                    <p class="text-center small text-muted mt-3 italic"><i class="fas fa-search-plus me-1"></i> Klik gambar untuk memperbesar</p>
+                </div>
+            </div>
+
+            <div class="card shadow-sm border-0 rounded-4 overflow-hidden">
                 <div class="table-responsive">
-                    <table class="table clean-table table-hover mb-0">
-                        <thead class="text-center">
+                    <table class="table elegant-table table-hover mb-0">
+                        <thead class="bg-dark text-white text-center small">
                             <tr>
-                                <th>NO</th>
-                                <th>JABATAN</th>
+                                <th width="70">NO</th>
+                                <th width="200">JABATAN</th>
                                 <th>NAMA LENGKAP</th>
                                 <th>URAIAN TUGAS</th>
                             </tr>
@@ -135,32 +98,25 @@
                         <tbody class="align-middle">
                             @forelse($struktur as $key => $item)
                             <tr>
-                                <td class="text-center text-muted fw-bold">{{ $key + 1 }}</td>
-                                <td class="text-center">
-                                    <span class="jabatan-label">{{ $item->jabatan }}</span>
-                                </td>
+                                <td class="text-center fw-bold text-muted">{{ $key + 1 }}</td>
+                                <td class="text-center"><span class="badge-jabatan">{{ $item->jabatan }}</span></td>
                                 <td class="fw-bold text-dark">{{ $item->nama }}</td>
                                 <td class="text-muted small">{{ $item->tugas }}</td>
                             </tr>
                             @empty
-                            <tr>
-                                <td colspan="4" class="text-center py-5 text-muted fst-italic">
-                                    Rincian tugas belum diinput di Dashboard (Menu Struktur Organisasi).
-                                </td>
-                            </tr>
+                            <tr><td colspan="4" class="text-center py-4 text-muted italic">Data anggota belum tersedia.</td></tr>
                             @endforelse
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
 
-        @if(optional($profil)->tugas_tanggung_jawab)
-        <div class="text-center mt-5">
-            <p class="text-muted small italic">
-                <i class="fas fa-info-circle me-1"></i> {{ $profil->tugas_tanggung_jawab }}
-            </p>
+            @if(isset($profil->tugas_tanggung_jawab))
+            <div class="text-center mt-5 p-4 bg-light-custom rounded-4 border-start border-primary border-4">
+                <p class="mb-0 text-dark fw-bold italic"><i class="fas fa-info-circle text-primary me-2"></i> {{ $profil->tugas_tanggung_jawab }}</p>
+            </div>
+            @endif
         </div>
-        @endif
-    </div>
-</section>
+    </section>
+
+</div>

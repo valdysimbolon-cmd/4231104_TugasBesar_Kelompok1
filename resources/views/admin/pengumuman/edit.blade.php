@@ -20,7 +20,6 @@
 
                 <div class="form-group mb-4">
                     <label>Isi Detail</label>
-                    <!-- DISESUAIKAN: name="isi_pengumuman" -->
                     <textarea name="isi_pengumuman" class="form-control" rows="6" required>{{ old('isi_pengumuman', $pengumuman->isi_pengumuman) }}</textarea>
                 </div>
 

@@ -8,28 +8,30 @@ use Illuminate\Support\Facades\File;
 
 class BeritaController extends Controller
 {
-    // 1. Menampilkan Daftar Berita
+    // --- READ: Daftar berita (terbaru di atas) ---
     public function index()
     {
         $beritas = Berita::latest()->get();
         return view('admin.berita.index', compact('beritas'));
     }
 
-    // 2. Menampilkan Form Tambah Berita
+    // --- VIEW: Form tambah berita ---
     public function create()
     {
         return view('admin.berita.create');
     }
 
-    // 3. Menyimpan Berita Baru ke Database
-    public function store(Request $request) {
+    // --- CREATE: Simpan data berita dan upload gambar ---
+    public function store(Request $request)
+    {
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
             'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
-            'link_berita' => 'nullable|url', // Tambahkan validasi URL
+            'link_berita' => 'nullable|url',
         ]);
 
+        // Pengolahan file gambar
         $file = $request->file('gambar');
         $nama_file = time() . "_" . $file->getClientOriginalName();
         $file->move(public_path('Admin/img/berita'), $nama_file);
@@ -38,33 +40,38 @@ class BeritaController extends Controller
             'judul' => $request->judul,
             'isi' => $request->isi,
             'gambar' => $nama_file,
-            'link_berita' => $request->link_berita, // Tambahkan ini
+            'link_berita' => $request->link_berita,
         ]);
 
         return redirect()->route('berita.index')->with('success', 'Berita berhasil diterbitkan!');
-}
+    }
 
-    // 4. Menampilkan Halaman Edit
+    // --- VIEW: Form edit berita ---
     public function edit($id)
     {
         $berita = Berita::findOrFail($id);
         return view('admin.berita.edit', compact('berita'));
     }
 
-    // 5. Memperbarui Data Berita
-    public function update(Request $request, $id) {
+    // --- UPDATE: Perbarui data dan ganti gambar lama jika ada ---
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
             'gambar' => 'image|mimes:jpeg,png,jpg|max:2048',
-            'link_berita' => 'nullable|url', // Tambahkan validasi URL
+            'link_berita' => 'nullable|url',
         ]);
 
         $berita = Berita::findOrFail($id);
         $nama_file = $berita->gambar;
 
         if ($request->hasFile('gambar')) {
-            File::delete(public_path('Admin/img/berita/' . $berita->gambar));
+            // Hapus file fisik gambar lama
+            if (File::exists(public_path('Admin/img/berita/' . $berita->gambar))) {
+                File::delete(public_path('Admin/img/berita/' . $berita->gambar));
+            }
+
             $file = $request->file('gambar');
             $nama_file = time() . "_" . $file->getClientOriginalName();
             $file->move(public_path('Admin/img/berita'), $nama_file);
@@ -74,20 +81,19 @@ class BeritaController extends Controller
             'judul' => $request->judul,
             'isi' => $request->isi,
             'gambar' => $nama_file,
-            'link_berita' => $request->link_berita, // Tambahkan ini
+            'link_berita' => $request->link_berita,
         ]);
 
         return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui!');
     }
 
-    // 6. Menghapus Berita
+    // --- DELETE: Hapus data dan file gambar terkait ---
     public function destroy($id)
     {
         $berita = Berita::findOrFail($id);
-        
-        // Hapus file fisik gambar dari folder public
-        File::delete(public_path('Admin/img/berita/' . $berita->gambar));
-
+        if (File::exists(public_path('Admin/img/berita/' . $berita->gambar))) {
+            File::delete(public_path('Admin/img/berita/' . $berita->gambar));
+        }
         $berita->delete();
 
         return redirect()->route('berita.index')->with('success', 'Berita berhasil dihapus!');

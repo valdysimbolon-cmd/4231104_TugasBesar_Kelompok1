@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container-fluid">
-    <!-- Header Halaman -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
         <h1 class="h3 mb-0 text-gray-800 font-weight-bold">Manajemen Pengumuman</h1>
         <a href="{{ route('pengumuman.create') }}" class="btn btn-info btn-icon-split shadow-sm">
