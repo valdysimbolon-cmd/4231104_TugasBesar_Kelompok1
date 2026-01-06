@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class StrukturOrganisasi extends Model
 {
     use HasFactory;
+    protected $table = 'struktur_organisasis';
 
     // WAJIB: Daftarkan kolom yang boleh diisi
     protected $fillable = ['jabatan', 'nama', 'tugas'];

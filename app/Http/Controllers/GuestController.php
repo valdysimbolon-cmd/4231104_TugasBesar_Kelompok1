@@ -12,9 +12,6 @@ use App\Models\StrukturOrganisasi; // <--- TAMBAHKAN INI
 
 class GuestController extends Controller
 {
-    /**
-     * Halaman Home
-     */
     public function index()
     {
         // 3 berita terbaru (UX + BONUS)
@@ -22,7 +19,7 @@ class GuestController extends Controller
         $beritas = Berita::latest()->take(3)->get();
 
         // Mengambil data baris-baris Struktur Organisasi (untuk Tabel Tugas & Tanggung Jawab)
-        $struktur = StrukturOrganisasi::orderBy('id', 'asc')->get();
+        $struktur = StrukturOrganisasi::all();
 
         // Data lainnya
         $pengumumans = Pengumuman::latest()->get();
