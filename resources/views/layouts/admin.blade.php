@@ -130,7 +130,8 @@
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <div class="text-right mr-2 d-none d-lg-inline">
-                                    <span class="text-gray-600 small d-block font-weight-bold">Administrator</span>
+                                    <!-- PERUBAHAN 1: Menampilkan Nama Admin Secara Dinamis -->
+                                    <span class="text-gray-600 small d-block font-weight-bold">{{ Auth::user()->name }}</span>
                                     <span class="text-success smaller" style="font-size: 0.7rem;"><i class="fas fa-circle fa-xs"></i> Online</span>
                                 </div>
                                 <img class="img-profile rounded-circle border shadow-sm"
@@ -138,7 +139,8 @@
                             </a>
                             
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <!-- PERUBAHAN 2: Menghubungkan ke Route Profil -->
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profil Saya
                                 </a>

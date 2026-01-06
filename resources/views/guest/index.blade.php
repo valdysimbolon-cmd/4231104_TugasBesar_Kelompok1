@@ -46,8 +46,6 @@
     {{-- SEMUA DATA PROFIL MASUK DI SINI --}}
     @include('guest.sections.about')
     
-    {{-- File Services DIHAPUS agar tidak duplikat --}}
-    
     {{-- 4. Berita Terbaru --}}
     @include('guest.sections.news')
 
@@ -60,8 +58,6 @@
     {{-- 7. Kontak & Lokasi --}}
     @include('guest.sections.contact')
 
-    {{-- 8. Footer --}}
-    @include('guest.sections.footer')
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

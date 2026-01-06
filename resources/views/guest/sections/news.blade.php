@@ -1,36 +1,128 @@
-<section class="page-section bg-light-custom" id="news">
-    <div class="container">
+<section class="py-5 bg-light" id="news">
+    <div class="container py-4">
+        <!-- Judul Header -->
         <div class="text-center mb-5">
-            <h2 class="section-heading text-uppercase">Berita & Kegiatan</h2>
-            <h3 class="section-subheading text-muted">Aktivitas Terbaru Siswa</h3>
-        </div>
+            <span class="news-subtitle">AKTIVITAS</span>
+            <h2 class="display-5 fw-bold text-dark">Berita & Kegiatan</h2>
+            <p class="lead text-muted">Momen terbaru siswa-siswi SMP Budi Mulia</p>
+            <div class="header-line-news"></div>
+        </div>      
         
-        <div class="row">
+        <div class="row g-4 justify-content-center">
             @forelse($beritas as $b)
-            <div class="col-lg-4 col-sm-6 mb-4">
-                <div class="portfolio-item card card-custom h-100 shadow-sm border-0 overflow-hidden">
-                    <img class="img-fluid" src="{{ asset('Admin/img/berita/'.$b->gambar) }}" style="height: 250px; object-fit: cover;" onerror="this.onerror=null; this.src='https://placehold.co/400x250?text=No+Image';">
-                    <div class="portfolio-caption p-4 bg-white text-center">
-                        <div class="portfolio-caption-heading fw-bold h5 mb-2">{{ $b->judul }}</div>
-                        <div class="portfolio-caption-subheading text-muted small">{{ Str::limit($b->isi, 100) }}</div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="news-gallery-card shadow-sm h-100">
+                    
+                    <!-- AREA GAMBAR - TINGGI DIKUNCI 200PX -->
+                    <div class="news-img-container">
+                        <img src="{{ asset('Admin/img/berita/'.$b->gambar) }}" 
+                             alt="{{ $b->judul }}"
+                             class="news-img-effect"
+                             onerror="this.src='https://placehold.co/600x400?text=Berita';">
+                        
+                        <!-- Overlay Biru Transparan (Ikon Sudah Dihapus) -->
+                        <div class="news-overlay-effect"></div>
+
+                        <!-- Tag Tanggal -->
+                        <div class="news-date-badge">
+                            {{ $b->created_at->format('d M') }}
+                        </div>
+                    </div>
+                    
+                    <div class="card-body d-flex flex-column news-padding">
+                        <h5 class="news-card-title">{{ $b->judul }}</h5>
+                        <p class="news-card-text">
+                            {{ Str::limit(strip_tags($b->isi), 100) }}
+                        </p>
+                        
+                        <div class="mt-auto">
+                            @if($b->link_berita)
+                                <a href="{{ $b->link_berita }}" target="_blank" class="news-btn-link ig-color">
+                                    Lihat di Instagram <i class="fab fa-instagram ms-1"></i>
+                                </a>
+                            @else
+                                <a href="#" class="news-btn-link blue-color">
+                                    Baca Selengkapnya <i class="fas fa-arrow-right ms-1"></i>
+                                </a>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
             @empty
-            <div class="col-12 text-center text-muted">Belum ada berita terbaru.</div>
+            <div class="col-12 text-center py-5">
+                <p class="text-muted">Belum ada berita terbaru.</p>
+            </div>
             @endforelse
         </div>
-
-        {{-- Tombol Lihat Semua Berita --}}
-        @if($beritas->count() >= 3)
-        <div class="text-center mt-4">
-            <a href="{{ route('berita.index') }}"
-               class="btn btn-outline-primary btn-sm px-4 rounded-pill shadow-sm">
-                <i class="fas fa-newspaper me-2"></i>
-                Lihat Semua Berita
-            </a>
-        </div>
-        @endif
-
     </div>
 </section>
+
+<style>
+    .news-subtitle { display: block; color: #0d6efd; font-weight: 700; letter-spacing: 2px; }
+    .header-line-news { width: 50px; height: 4px; background-color: #0d6efd; margin: 15px auto 0; border-radius: 2px; }
+
+    .news-gallery-card {
+        background: #fff;
+        border-radius: 15px !important;
+        overflow: hidden !important;
+        border: 1px solid #eee !important;
+        transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    }
+
+    .news-img-container {
+        width: 100% !important;
+        height: 200px !important;
+        max-height: 200px !important;
+        overflow: hidden !important;
+        position: relative !important;
+    }
+
+    .news-img-effect {
+        width: 100% !important;
+        height: 200px !important;
+        object-fit: cover !important;
+        object-position: top !important;
+        transition: transform 0.5s ease !important;
+        display: block !important;
+    }
+
+    /* Lapisan Biru Tanpa Ikon */
+    .news-overlay-effect {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: rgba(13, 110, 253, 0.4); /* Biru transparan lebih halus */
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        backdrop-filter: blur(1px);
+        z-index: 3;
+    }
+
+    .news-date-badge {
+        position: absolute;
+        bottom: 12px; right: 12px;
+        background: #0d6efd;
+        color: white;
+        padding: 3px 12px;
+        border-radius: 50px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        z-index: 4;
+    }
+
+    .news-padding { padding: 20px !important; }
+    .news-card-title { font-size: 1.1rem; font-weight: 700; color: #222; margin-bottom: 12px; }
+    .news-card-text { font-size: 0.85rem; color: #666; margin-bottom: 20px; line-height: 1.6; }
+    .news-btn-link { text-decoration: none; font-size: 0.85rem; font-weight: 700; }
+    .ig-color { color: #e1306c; }
+    .blue-color { color: #0d6efd; }
+
+    /* Hover */
+    .news-gallery-card:hover {
+        transform: translateY(-10px) !important;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+    }
+    .news-gallery-card:hover .news-img-effect { transform: scale(1.1) !important; }
+    .news-gallery-card:hover .news-overlay-effect { opacity: 1 !important; }
+</style>

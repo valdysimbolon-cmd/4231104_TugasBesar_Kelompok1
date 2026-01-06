@@ -11348,3 +11348,318 @@ header.masthead {
     font-weight: 700;
     margin-bottom: 2rem;
 }
+/* --- GALERI --- */
+.gallery-header h2 {
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.header-line {
+    width: 50px;
+    height: 3px;
+    background-color: #0d6efd;
+    margin: 15px auto 0;
+    border-radius: 10px;
+}
+
+.gallery-card {
+    background: #ffffff;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.gallery-card .image-box {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.gallery-body {
+    padding: 12px;
+    text-align: center;
+}
+
+.gallery-title {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #444;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.gallery-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+    border-color: #0d6efd;
+}
+
+.gallery-card:hover img {
+    transform: scale(1.08);
+}
+
+
+/* --- PENGUMUMAN --- */
+.announcement-header h2 {
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.announcement-card {
+    background: #ffffff;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    transition: all 0.3s ease-in-out;
+}
+
+.announcement-body {
+    padding: 20px 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.announcement-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.announcement-meta {
+    font-size: 0.85rem;
+    color: #888;
+}
+
+.btn-unduh {
+    display: inline-block;
+    padding: 10px 24px;
+    background-color: #198754;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-unduh:hover {
+    background-color: #146c43;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+.announcement-card:hover {
+    transform: translateX(10px);
+    border-color: #198754;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08) !important;
+}
+
+
+/* --- BERITA --- */
+.news-subtitle {
+    display: block;
+    color: #0d6efd;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.header-line-news {
+    width: 50px;
+    height: 4px;
+    background-color: #0d6efd;
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.news-gallery-card {
+    background: #fff;
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    border: 1px solid #eee !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.news-img-container {
+    width: 100% !important;
+    height: 200px !important;
+    max-height: 200px !important;
+    overflow: hidden !important;
+    position: relative !important;
+}
+
+.news-img-effect {
+    width: 100% !important;
+    height: 200px !important;
+    object-fit: cover !important;
+    object-position: top !important;
+    transition: transform 0.5s ease !important;
+    display: block !important;
+}
+
+.news-overlay-effect {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(13, 110, 253, 0.4);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    backdrop-filter: blur(1px);
+    z-index: 3;
+}
+
+.news-date-badge {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: #0d6efd;
+    color: white;
+    padding: 3px 12px;
+    border-radius: 50px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    z-index: 4;
+}
+
+.news-padding {
+    padding: 20px !important;
+}
+
+.news-card-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #222;
+    margin-bottom: 12px;
+}
+
+.news-card-text {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.news-btn-link {
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.ig-color { color: #e1306c; }
+.blue-color { color: #0d6efd; }
+
+.news-gallery-card:hover {
+    transform: translateY(-10px) !important;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+}
+
+.news-gallery-card:hover .news-img-effect {
+    transform: scale(1.1) !important;
+}
+
+.news-gallery-card:hover .news-overlay-effect {
+    opacity: 1 !important;
+}
+
+
+/* --- KONTAK & FOOTER --- */
+.integrated-section {
+    background-color: #f8f9fa;
+}
+
+.spacing-2 {
+    letter-spacing: 2px;
+}
+
+.text-primary-custom {
+    color: #0d6efd !important;
+}
+
+.header-line-blue {
+    width: 60px;
+    height: 4px;
+    background-color: #0d6efd;
+    border-radius: 2px;
+}
+
+.contact-card {
+    transition: all 0.3s ease;
+    border-radius: 15px;
+}
+
+.card-link:hover .contact-card {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important;
+    background-color: #ffffff;
+}
+
+.icon-circle {
+    width: 70px;
+    height: 70px;
+    background: rgba(13, 110, 253, 0.1);
+    border-radius: 50%;
+}
+
+.underline-hover:hover {
+    text-decoration: underline;
+}
+
+.footer-border-top {
+    border-top: 4px solid #3bc3d1;
+}
+
+.text-info-custom {
+    color: #3bc3d1 !important;
+}
+
+.btn-social {
+    width: 40px;
+    height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.hover-facebook:hover {
+    background-color: #1877F2 !important;
+    border-color: #1877F2 !important;
+    color: white !important;
+}
+
+.hover-instagram:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important;
+    border-color: transparent !important;
+    color: white !important;
+}
+
+
+/* --- RESPONSIVE (HP) --- */
+@media (max-width: 768px) {
+    .announcement-body {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .announcement-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .news-gallery-card:hover {
+        transform: translateY(-5px) !important;
+    }
+}

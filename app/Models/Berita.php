@@ -10,5 +10,5 @@ class Berita extends Model
     use HasFactory;
 
     // Tambahkan baris di bawah ini:
-    protected $fillable = ['judul', 'isi', 'gambar'];
+    protected $fillable = ['judul', 'isi', 'gambar', 'link_berita'];
 }

@@ -9,6 +9,10 @@ use App\Http\Controllers\ProfilSekolahController;
 use App\Http\Controllers\GaleriController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\StrukturOrganisasiController;
+use App\Http\Controllers\ProfileController;
+use App\Models\Berita;
+use App\Models\Pengumuman;
+use App\Models\Galeri;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,10 +38,18 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 */
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
-        return view('layouts.dashboard');
+        return view('layouts.dashboard', [
+            'jml_berita' => Berita::count(),
+            'jml_pengumuman' => Pengumuman::count(),
+            'jml_galeri' => Galeri::count(),
+        ]);
     })->name('dashboard');
 
-    // Semua Resource Admin
+    // Manajemen Profil Admin
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+    // Resource Admin
     Route::resource('profil-sekolah', ProfilSekolahController::class);
     Route::resource('berita', BeritaController::class);
     Route::resource('pengumuman', PengumumanController::class);

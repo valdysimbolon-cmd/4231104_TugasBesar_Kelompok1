@@ -22,12 +22,12 @@ class BeritaController extends Controller
     }
 
     // 3. Menyimpan Berita Baru ke Database
-    public function store(Request $request)
-    {
+    public function store(Request $request) {
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048', // Syarat wajib modul
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'link_berita' => 'nullable|url', // Tambahkan validasi URL
         ]);
 
         $file = $request->file('gambar');
@@ -38,10 +38,11 @@ class BeritaController extends Controller
             'judul' => $request->judul,
             'isi' => $request->isi,
             'gambar' => $nama_file,
+            'link_berita' => $request->link_berita, // Tambahkan ini
         ]);
 
         return redirect()->route('berita.index')->with('success', 'Berita berhasil diterbitkan!');
-    }
+}
 
     // 4. Menampilkan Halaman Edit
     public function edit($id)
@@ -51,22 +52,19 @@ class BeritaController extends Controller
     }
 
     // 5. Memperbarui Data Berita
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id) {
         $request->validate([
             'judul' => 'required',
             'isi' => 'required',
-            'gambar' => 'image|mimes:jpeg,png,jpg|max:2048', // Opsional saat edit
+            'gambar' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'link_berita' => 'nullable|url', // Tambahkan validasi URL
         ]);
 
         $berita = Berita::findOrFail($id);
         $nama_file = $berita->gambar;
 
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama agar tidak menumpuk di hosting
             File::delete(public_path('Admin/img/berita/' . $berita->gambar));
-
-            // Upload gambar baru
             $file = $request->file('gambar');
             $nama_file = time() . "_" . $file->getClientOriginalName();
             $file->move(public_path('Admin/img/berita'), $nama_file);
@@ -76,6 +74,7 @@ class BeritaController extends Controller
             'judul' => $request->judul,
             'isi' => $request->isi,
             'gambar' => $nama_file,
+            'link_berita' => $request->link_berita, // Tambahkan ini
         ]);
 
         return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui!');

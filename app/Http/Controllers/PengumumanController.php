@@ -2,86 +2,86 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pengumuman;
+use App\Models\Berita;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
-class PengumumanController extends Controller
+class BeritaController extends Controller
 {
-    // 1. Menampilkan Daftar Pengumuman
-    public function index() {
-        $pengumumans = Pengumuman::latest()->get();
-        return view('admin.pengumuman.index', compact('pengumumans'));
+    public function index()
+    {
+        $beritas = Berita::latest()->get();
+        return view('admin.berita.index', compact('beritas'));
     }
 
-    // 2. Menampilkan Form Tambah
-    public function create() {
-        return view('admin.pengumuman.create');
+    public function create()
+    {
+        return view('admin.berita.create');
     }
 
-    // 3. Menyimpan Pengumuman Baru
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'judul' => 'required',
-            'isi_pengumuman' => 'required',
-            'file_upload' => 'required|mimes:pdf,doc,docx,zip|max:5000', // Syarat wajib modul
+            'isi' => 'required',
+            'gambar' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'link_berita' => 'nullable|url',
         ]);
 
-        $file = $request->file('file_upload');
+        $file = $request->file('gambar');
         $nama_file = time() . "_" . $file->getClientOriginalName();
-        $file->move(public_path('Admin/files/pengumuman'), $nama_file);
+        $file->move(public_path('Admin/img/berita'), $nama_file);
 
-        Pengumuman::create([
+        Berita::create([
             'judul' => $request->judul,
-            'isi_pengumuman' => $request->isi_pengumuman,
-            'file_upload' => $nama_file,
+            'isi' => $request->isi,
+            'gambar' => $nama_file,
+            'link_berita' => $request->link_berita,
         ]);
 
-        return redirect()->route('pengumuman.index')->with('success', 'Pengumuman berhasil dipublikasikan!');
+        return redirect()->route('berita.index')->with('success', 'Berita berhasil diterbitkan!');
     }
 
-    // 4. Menampilkan Form Edit
-    public function edit($id) {
-        $pengumuman = Pengumuman::findOrFail($id);
-        return view('admin.pengumuman.edit', compact('pengumuman'));
+    public function edit($id)
+    {
+        $berita = Berita::findOrFail($id);
+        return view('admin.berita.edit', compact('berita'));
     }
 
-    // 5. Memperbarui Data Pengumuman
-    public function update(Request $request, $id) {
+    public function update(Request $request, $id)
+    {
         $request->validate([
             'judul' => 'required',
-            'isi_pengumuman' => 'required',
-            'file_upload' => 'mimes:pdf,doc,docx,zip|max:5000', // Opsional saat update
+            'isi' => 'required',
+            'gambar' => 'image|mimes:jpeg,png,jpg|max:2048',
+            'link_berita' => 'nullable|url',
         ]);
 
-        $pengumuman = Pengumuman::findOrFail($id);
-        $nama_file = $pengumuman->file_upload;
+        $berita = Berita::findOrFail($id);
+        $nama_file = $berita->gambar;
 
-        // Logika jika admin mengganti file dokumen
-        if ($request->hasFile('file_upload')) {
-            // Hapus file lama dari folder agar tidak menumpuk
-            File::delete(public_path('Admin/files/pengumuman/' . $pengumuman->file_upload));
-
-            $file = $request->file('file_upload');
+        if ($request->hasFile('gambar')) {
+            File::delete(public_path('Admin/img/berita/' . $berita->gambar));
+            $file = $request->file('gambar');
             $nama_file = time() . "_" . $file->getClientOriginalName();
-            $file->move(public_path('Admin/files/pengumuman'), $nama_file);
+            $file->move(public_path('Admin/img/berita'), $nama_file);
         }
 
-        $pengumuman->update([
+        $berita->update([
             'judul' => $request->judul,
-            'isi_pengumuman' => $request->isi_pengumuman,
-            'file_upload' => $nama_file,
+            'isi' => $request->isi,
+            'gambar' => $nama_file,
+            'link_berita' => $request->link_berita,
         ]);
 
-        return redirect()->route('pengumuman.index')->with('success', 'Pengumuman berhasil diperbarui!');
+        return redirect()->route('berita.index')->with('success', 'Berita berhasil diperbarui!');
     }
 
-    // 6. Menghapus Pengumuman
-    public function destroy($id) {
-        $data = Pengumuman::findOrFail($id);
-        // Hapus file fisik dari folder public sebelum menghapus data di database
-        File::delete(public_path('Admin/files/pengumuman/' . $data->file_upload));
-        $data->delete();
-        return redirect()->back()->with('success', 'Pengumuman berhasil dihapus.');
+    public function destroy($id)
+    {
+        $berita = Berita::findOrFail($id);
+        File::delete(public_path('Admin/img/berita/' . $berita->gambar));
+        $berita->delete();
+        return redirect()->route('berita.index')->with('success', 'Berita berhasil dihapus!');
     }
 }
