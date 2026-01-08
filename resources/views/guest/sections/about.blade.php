@@ -1,6 +1,5 @@
 <div class="profile-section-wrapper" id="about">
 
-    <!-- 1. VISI & MISI -->
     <section class="py-5">
         <div class="container py-4">
             <div class="text-center mb-5">
@@ -36,7 +35,6 @@
         </div>
     </section>
 
-    <!-- 2. SEJARAH -->
     <section class="py-5 bg-light-custom">
         <div class="container">
             <div class="row align-items-center g-5">
@@ -44,7 +42,7 @@
                     <div class="history-img-wrapper shadow-lg border border-white border-5">
                         <img src="{{ asset('Admin/img/profil/sekolah_depan.jpg') }}" 
                              class="img-fluid rounded-4" alt="Gedung Sekolah"
-                             onerror="this.src='https://placehold.co/600x400?text=Gedung+Sekolah';">
+                             onerror="this.src='https://placehold.co/600x400?text=Foto+Sekolah';">
                     </div>
                 </div>
                 <div class="col-lg-7">
@@ -58,7 +56,6 @@
         </div>
     </section>
 
-    <!-- 3. STRUKTUR ORGANISASI -->
     <section class="py-5 bg-white">
         <div class="container py-4">
             <div class="text-center mb-5">
@@ -69,12 +66,12 @@
             </div>
 
             <div class="row justify-content-center mb-5">
-                <div class="col-lg-8">
-                    <div class="structure-img-box shadow-sm border rounded-4 bg-white">
+                <div class="col-lg-10 text-center">
+                    <div class="structure-img-box-large shadow-lg border rounded-4 bg-white">
                         @if($profil && $profil->struktur_organisasi)
                             <a href="{{ asset('Admin/img/profil/' . $profil->struktur_organisasi) }}" target="_blank">
                                 <img src="{{ asset('Admin/img/profil/' . $profil->struktur_organisasi) }}" 
-                                     class="structure-img-limited" alt="Bagan Struktur">
+                                     class="structure-img-fluid" alt="Bagan Struktur">
                             </a>
                         @else
                             <div class="py-5 text-center text-muted italic">Bagan struktur belum diunggah.</div>
@@ -112,7 +109,7 @@
             </div>
 
             @if(isset($profil->tugas_tanggung_jawab))
-            <div class="text-center mt-5 p-4 bg-light-custom rounded-4 border-start border-primary border-4">
+            <div class="text-center mt-5 p-4 bg-light-custom rounded-4 border-start border-primary border-4 shadow-sm">
                 <p class="mb-0 text-dark fw-bold italic"><i class="fas fa-info-circle text-primary me-2"></i> {{ $profil->tugas_tanggung_jawab }}</p>
             </div>
             @endif

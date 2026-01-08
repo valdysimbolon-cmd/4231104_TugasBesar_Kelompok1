@@ -11776,4 +11776,199 @@ header.masthead {
     .italic {
         font-style: italic;
     }
+html { 
+    scroll-behavior: smooth; 
+}
+body { 
+    font-family: 'Poppins', sans-serif; 
+    color: #333; 
+}
+section { 
+    scroll-margin-top: 80px; 
+}
+
+.navbar {
+    transition: all 0.4s ease;
+    padding: 20px 0;
+    background: transparent;
+}
+.navbar-shrink {
+    padding: 10px 0;
+    background: rgba(255, 255, 255, 0.95) !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+.navbar .nav-link { 
+    color: #fff !important; 
+    font-weight: 500; 
+    transition: 0.3s;
+}
+.navbar-shrink .nav-link { 
+    color: #333 !important; 
+}
+.navbar .nav-link:hover {
+    color: #3bc3d1 !important;
+}
+
+.masthead {
+    height: 100vh;
+    min-height: 650px;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+.main-title { 
+    font-size: clamp(2.5rem, 7vw, 4.5rem); 
+    font-weight: 800; 
+    line-height: 1.1; 
+}
+.text-blue-accent { 
+    color: #3bc3d1; 
+}
+.btn-elegant-blue {
+    background: linear-gradient(135deg, #0d6efd 0%, #1a3b91 100%);
+    border: none; 
+    color: white; 
+    padding: 1rem 2.5rem; 
+    border-radius: 50px;
+    font-weight: 700; 
+    transition: all 0.3s ease;
+}
+.btn-elegant-blue:hover { 
+    transform: translateY(-3px); 
+    box-shadow: 0 10px 20px rgba(13, 110, 253, 0.3); 
+    color: white; 
+}
+
+.header-line-blue { 
+    width: 60px; 
+    height: 4px; 
+    background-color: #0d6efd; 
+    margin: 15px auto 30px; 
+    border-radius: 10px; 
+}
+.bg-light-custom { 
+    background-color: #f8f9fa; 
+}
+.accent-text { 
+    color: #0d6efd !important; 
+    font-weight: 700; 
+    letter-spacing: 2px; 
+}
+
+.elegant-vision-card {
+    background: #fff; 
+    border-radius: 20px; 
+    padding: 40px;
+    text-align: center; 
+    border: 1px solid #eee; 
+    transition: 0.3s;
+}
+.elegant-vision-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08); 
+}
+.icon-circle-bg {
+    width: 60px; 
+    height: 60px; 
+    background: rgba(13, 110, 253, 0.1);
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    border-radius: 50%; 
+    margin: 0 auto 20px;
+}
+
+.structure-img-box-large {
+    height: 550px !important; 
+    overflow: hidden; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    background: #fff;
+    border-radius: 20px; 
+    border: 1px solid #eee; 
+    padding: 20px;
+    margin: 0 auto;
+}
+.structure-img-fluid { 
+    max-height: 500px !important; 
+    width: auto !important; 
+    max-width: 100% !important;
+    object-fit: contain; 
+    transition: 0.4s;
+}
+.structure-img-box-large:hover .structure-img-fluid { 
+    transform: scale(1.02); 
+}
+
+.news-gallery-card {
+    background: #fff; 
+    border-radius: 15px; 
+    overflow: hidden;
+    border: 1px solid #eee; 
+    transition: 0.3s;
+}
+.news-img-container { 
+    height: 200px !important; 
+    overflow: hidden; 
+    position: relative; 
+}
+.news-img-effect { 
+    height: 200px !important; 
+    width: 100%; 
+    object-fit: cover; 
+    transition: 0.5s; 
+}
+.news-overlay-effect { 
+    position: absolute; 
+    top: 0; left: 0; 
+    width: 100%; height: 100%; 
+    background: rgba(13, 110, 253, 0.3); 
+    opacity: 0; 
+    transition: 0.4s; 
+}
+.news-gallery-card:hover .news-overlay-effect { 
+    opacity: 1; 
+}
+
+.elegant-table thead { 
+    background-color: #1a3b91; 
+    color: #fff; 
+}
+.badge-jabatan { 
+    background: rgba(13, 110, 253, 0.1); 
+    color: #0d6efd; 
+    padding: 5px 15px; 
+    border-radius: 50px; 
+    font-weight: 700; 
+    font-size: 0.75rem; 
+}
+
+.contact-card { 
+    transition: 0.3s; 
+    border-radius: 15px; 
+    background: #fff; 
+    border: 1px solid #eee; 
+}
+.contact-card:hover { 
+    transform: translateY(-10px); 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
+}
+.btn-social {
+    width: 40px; 
+    height: 40px; 
+    display: inline-flex;
+    align-items: center; 
+    justify-content: center; 
+    transition: 0.3s;
+}
+.hover-facebook:hover { 
+    background-color: #1877F2 !important; 
+    color: white !important; 
+}
+.hover-instagram:hover { 
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888) !important; 
+    color: white !important; 
+}
 }
