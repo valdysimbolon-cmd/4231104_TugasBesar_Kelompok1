@@ -14,7 +14,7 @@ class ProfilSekolahController extends Controller
     {
         $profil = Profil::first();
         $struktur = StrukturOrganisasi::all(); 
-        return view('admin.profil.index', compact('profil', 'struktur'));
+        return view('admin.profil.edit', compact('profil', 'struktur'));
     }
 
     // --- VIEW: Halaman pengeditan profil sekolah ---
